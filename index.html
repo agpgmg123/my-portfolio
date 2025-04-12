@@ -3,92 +3,388 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>my folio</title>
+    <title>My Portfolio</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #D4F1F9; /* Ice blue background */
+            color: #333333; /* Dark text for contrast */
+            line-height: 1.6;
+        }
+        
+        .welcome-slide {
+            background: #D4F1F9; /* Ice blue background */
+            color: #FF2D75; /* Bright pink text that contrasts well with ice blue */
+            text-align: center;
+            padding: 150px 20px; /* Increased padding */
+            margin-bottom: 30px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .welcome-slide h1 {
+            font-size: 5rem; /* Larger font size */
+            margin: 0;
+            animation: fadeIn 2s;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            font-weight: 800;
+            letter-spacing: 2px;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        nav {
+            background-color: #FFFFFF;
+            padding: 20px 0; /* Increased padding */
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        
+        nav ul li {
+            display: inline;
+            margin: 0 25px; /* Increased margin */
+        }
+        
+        nav ul li a {
+            color: #2E86AB;
+            text-decoration: none;
+            font-size: 1.4rem; /* Larger font size */
+            padding: 10px 20px; /* Increased padding */
+            border-radius: 5px;
+            transition: all 0.3s;
+            font-weight: 600;
+        }
+        
+        nav ul li a:hover {
+            background-color: #2E86AB;
+            color: white;
+            transform: translateY(-3px);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px; /* Increased padding */
+        }
+        
+        h1, h2 {
+            color: #2E86AB;
+            text-align: center;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        h1 {
+            font-size: 3.5rem; /* Larger font size */
+            margin: 50px 0 40px; /* Increased margin */
+        }
+        
+        h2 {
+            font-size: 2.8rem; /* Larger font size */
+            margin: 45px 0 35px; /* Increased margin */
+        }
+        
+        p {
+            margin: 25px 0; /* Increased margin */
+            text-align: left;
+            font-size: 1.3rem; /* Larger font size */
+        }
+        
+        .about-section {
+            display: flex;
+            align-items: center;
+            gap: 50px; /* Increased gap */
+            margin: 60px 0; /* Increased margin */
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .profile-img-container {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+        
+        .profile-img {
+            width: 400px; /* Larger image */
+            height: 400px; /* Larger image */
+            border-radius: 15px; /* More rounded corners */
+            object-fit: cover;
+            border: 8px solid #2E86AB; /* Thicker border */
+            box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+            transition: transform 0.3s;
+        }
+        
+        .profile-img:hover {
+            transform: scale(1.05);
+        }
+        
+        ul {
+            padding-left: 50px; /* Increased padding */
+            text-align: left;
+            font-size: 1.3rem; /* Larger font size */
+        }
+        
+        li {
+            margin-bottom: 15px; /* Increased margin */
+        }
+        
+        .project-gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 40px; /* Increased gap */
+            margin: 50px 0; /* Increased margin */
+        }
+        
+        .project-item {
+            text-align: center;
+            max-width: 450px; /* Slightly larger */
+            background: #FFFFFF;
+            padding: 25px; /* Increased padding */
+            border-radius: 15px;
+            transition: transform 0.3s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .project-item:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .project-item img {
+            width: 100%;
+            height: 250px; /* Slightly taller */
+            border-radius: 10px;
+            object-fit: cover;
+        }
+        
+        .project-item p {
+            text-align: center;
+            font-weight: bold;
+            margin-top: 20px; /* Increased margin */
+            color: #2E86AB;
+            font-size: 1.4rem; /* Larger font size */
+        }
+        
+        a {
+            color: #2E86AB;
+            text-decoration: none;
+            transition: color 0.3s;
+            font-weight: 600;
+            font-size: 1.3rem; /* Larger font size */
+        }
+        
+        a:hover {
+            color: #FF2D75;
+            text-decoration: underline;
+        }
+        
+        .contact-info {
+            text-align: center;
+            margin: 50px 0; /* Increased margin */
+            padding: 40px; /* Increased padding */
+            background: #FFFFFF;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+        
+        .section {
+            margin-bottom: 80px; /* Increased margin */
+            padding: 30px; /* Increased padding */
+            background: #FFFFFF;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+        
+        @media (max-width: 768px) {
+            .welcome-slide h1 {
+                font-size: 3.5rem;
+            }
+            
+            .about-section {
+                flex-direction: column;
+            }
+            
+            .profile-img {
+                width: 300px;
+                height: 300px;
+            }
+            
+            nav ul li a {
+                font-size: 1.2rem;
+                padding: 8px 15px;
+            }
+            
+            h1 {
+                font-size: 2.8rem;
+            }
+            
+            h2 {
+                font-size: 2.2rem;
+            }
+            
+            p, ul, a {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
 </head>
 <body>
-    <body background="">
-    <center>
-    <h1><font size=56px >A Student With a Vision</font></h1>
-    </center>
+    <div class="welcome-slide">
+        <h1>WELCOME TO MY PORTFOLIO</h1>
+    </div>
     
-    <p1>Hello !!! This side Aashi Gupta and i'm someone who believes in learning constantly, growing cosistently, and contributing meaningfully. i come from a engineering background write now I am a firstyear Btech Electronics and Telecommunication engineering student in MIT AOE , Alandi , pune , Maharastra basically i belong to New Delhi but my father got transfered  in his job and then we got shifted to maharastra and therfore my schooling as well as my junior college has being done in Maharastra only</p1>
-    <h1><center><font face="algerain" size =36px>About Me</center></font></h1>
-    <img src="images/my pic.jpg" ></img>
-
+    <nav>
+        <ul>
+            <li><a href="#about">About Me</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#hobbies">Hobbies</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
     
-    <p>I am a student studying in engineering firstyear i belong to delhi and i love to expolre and learn new things. I love to play Badminton in my free time as well as to read books. i am an average student in academics ,basically i am a very enthusiastic person who loves nature, animals and spirituality.i also love to travel on new places and explore. also i am a big foody kinda person who loves to try different kind of traditional as well as non traditional food belonging to different regionsand states</p>
-
-    <!-- <h1><center><font face="algerain" size="56px" > projects</font></center></h1> -->
-    
-  
-
-    <h1><center><font size="56 px"> Professional Skills</font></center></h1>
-    <ul type="square"
-    <li> VS Code</li>
-    <li>C language</li>
-    <li>HTML, CSS</li>
-    <li>Tinkercad</li>
-    <li> A bit of github Github</li>
-    <li>Memorizing PowerPoint Presentation </li>
-
-    <h1><center><font size =56px>Personal and Self Growth skills</center></font> </h1>
-    <ul type="square">
-        <li>Rangoli designing</li>
-        <li>Mehendi</li> 
-        <li>Dancing</li> 
-        <li>Photography</li>
+    <div class="container">
+        <section id="about" class="section">
+            <h1>A Student With a Vision</h1>
+            <div class="about-section">
+                <div class="about-text">
+                    <p>Hello! This is Aashi Gupta, someone who believes in learning constantly, growing consistently, and contributing meaningfully. I come from an engineering background and currently I am a first-year BTech Electronics and Telecommunication Engineering student at MIT AOE, Alandi, Pune, Maharashtra.</p>
+                    <p>Originally from New Delhi, my family moved to Maharashtra due to my father's job transfer. My schooling as well as junior college education was completed in Maharashtra.</p>
+                    
+                    <h2>About Me</h2>
+                    <p>I am a first-year engineering student who loves to explore and learn new things. I enjoy playing badminton in my free time as well as reading books. Academically, I'm an average student, but I'm a very enthusiastic person who loves nature, animals, and spirituality.</p>
+                    <p>I also love traveling to new places and exploring. Additionally, I'm a big foodie who enjoys trying different kinds of traditional as well as non-traditional foods from various regions and states.</p>
+                </div>
+                <div class="profile-img-container">
+                    <img src="images/my pic.jpg" alt="Aashi Gupta" class="profile-img">
+                </div>
+            </div>
+        </section>
         
-
-    </ul>
-    <h1> Hobbies </h1>
-    <ul type="circle">
-    <li>I love  play Badminton a lot as i have mentioned earlier</li>
-    <li>I love to cook food</li>
-    <li>I love Dancing</li>
-    <li>I love learning and Exploring</li>
-    <li>I am a big Foody</li>
-    <li>I really love to go on trips and travelling</li>
-    <li>I love to read books</li>
-    </ul> 
-
-    <h1><cenetr><font size=56px>Projects and Achievements </font></cenetr></h1>
-    <ol type="i">
-        <p><h1>Logic sensing and Actuations Projects</h2></p>
-        <li><a href="https://drive.google.com/file/d/14o2UDFjYpDTqMZ_SL5sCISewdCmpY9G-/view?usp=drive_link" target="_blank"> alcohol detector </a></li>
-        <li><a href="https://drive.google.com/file/d/1vZRm3jJ0K6-9Dlz9Cng14iM1bxdAIrQM/view?usp=drive_link" target="_blank"> human following robot</a></li>
-        <br>
-     <p>Alcohol Detector</p>
-     <img src="C:\Users\aashi\OneDrive\Desktop\images\3.jpg" width="400" height="200"> </img>
-    </ol>
-     <p>Human Following Robot</p>
-     <img src="C:\Users\aashi\OneDrive\Desktop\images\5.jpg" width="400" height="200"> </img>
-     <p>Parachute</p>
-     <img src="C:\Users\aashi\OneDrive\Desktop\images\1.jpg" width="400" height="200"> </img>
-     <p>Ai Assitant using python</p>
-     <img src="C:\Users\aashi\OneDrive\Desktop\images\2.jpg" width="400" height="200"> </img>
-     <p>Human Following Robot </p>
-     <img src="images/11." width="400" height="200"></img>
-     <p><h2>Elecrtonic workshop Projects</h2></p>
-    
-     <p>Police Siren Circuit</p><img src="C:\Users\aashi\OneDrive\Desktop\images\8.jpg" width="400" height="200"></img>
-     <p>Police siren video</p><a href="https://drive.google.com/file/d/1RaO4dL56pw92Oa_oirLgtQyO_aw0M4mg/view?usp=sharing" target="_blank">click me for seeing the police siren</a href>
-    
-     <p>pcb designing 1</p><img src="C:\Users\aashi\OneDrive\Desktop\images\6.jpg" width="400" height="200"></img>
-    
-     <p>pcb designing 2</p><img src="C:\Users\aashi\OneDrive\Desktop\images\7.jpg" width="400" height="200"></img>
-    
-     <p>Projectile Motion</p><img src="C:\Users\aashi\OneDrive\Desktop\images\9.jpg" width="400" height="200"></img>
-    
-     <p>Tuss Model</p><img src="C:\Users\aashi\OneDrive\Desktop\images\12.jpg" width="400" height="200"></img>
-    
-     <p>Python Certificate by Cisco</p><img src="C:\Users\aashi\OneDrive\Desktop\images\13.jpg" width="400" height="200"></img>
-     
-
-     <h1>Contacts</h1>
-
-     <p>Thankyou for taking the time to explore my work. I'm always open to nem opportunities, Collabrations or simply a good conversation . Fell free to reach out through any of the channels below .... I'd love to hear from you</p>
-<p>contact details: </p>
-<p>Email:202401070197@mitaoe.ac.in</p>
-<p>Phone :9970463903</p>
+        <!-- Rest of your content remains the same -->
+        <section id="skills" class="section">
+            <h1>Professional Skills</h1>
+            <ul type="square">
+                <li>VS Code</li>
+                <li>C language</li>
+                <li>HTML, CSS</li>
+                <li>Tinkercad</li>
+                <li>A bit of GitHub</li>
+                <li>Memorizing PowerPoint Presentations</li>
+            </ul>
+            
+            <h1>Personal and Self Growth Skills</h1>
+            <ul type="square">
+                <li>Rangoli designing</li>
+                <li>Mehendi</li> 
+                <li>Dancing</li> 
+                <li>Photography</li>
+            </ul>
+        </section>
+        
+        <section id="hobbies" class="section">
+            <h1>Hobbies</h1>
+            <ul type="circle">
+                <li>I love playing Badminton a lot as I mentioned earlier</li>
+                <li>I love to cook food</li>
+                <li>I love Dancing</li>
+                <li>I love learning and Exploring</li>
+                <li>I am a big Foodie</li>
+                <li>I really love to go on trips and traveling</li>
+                <li>I love to read books</li>
+            </ul> 
+        </section>
+        
+        <section id="projects" class="section">
+            <h1>Projects and Achievements</h1>
+            
+            <h2>Logic Sensing and Actuations Projects</h2>
+            <div class="project-gallery">
+                <div class="project-item">
+                    <a href="https://drive.google.com/file/d/14o2UDFjYpDTqMZ_SL5sCISewdCmpY9G-/view?usp=drive_link" target="_blank">
+                        <img src="images/3.jpg" alt="Alcohol Detector">
+                    </a>
+                    <p>Alcohol Detector</p>
+                </div>
+                
+                <div class="project-item">
+                    <a href="https://drive.google.com/file/d/1vZRm3jJ0K6-9Dlz9Cng14iM1bxdAIrQM/view?usp=drive_link" target="_blank">
+                        <img src="images/5.jpg" alt="Human Following Robot">
+                    </a>
+                    <p>Human Following Robot</p>
+                </div>
+                
+                <div class="project-item">
+                    <img src="images/1.jpg" alt="Parachute">
+                    <p>Parachute</p>
+                </div>
+                
+                <div class="project-item">
+                    <img src="images/2.jpg" alt="AI Assistant">
+                    <p>AI Assistant using Python</p>
+                </div>
+            </div>
+            
+            <h2>Electronic Workshop Projects</h2>
+            <div class="project-gallery">
+                <div class="project-item">
+                    <img src="images/8.jpg" alt="Police Siren Circuit">
+                    <p>Police Siren Circuit</p>
+                    <a href="https://drive.google.com/file/d/1RaO4dL56pw92Oa_oirLgtQyO_aw0M4mg/view?usp=sharing" target="_blank">View Police Siren Video</a>
+                </div>
+                
+                <div class="project-item">
+                    <img src="images/6.jpg" alt="PCB Designing">
+                    <p>PCB Designing 1</p>
+                </div>
+                
+                <div class="project-item">
+                    <img src="images/7.jpg" alt="PCB Designing">
+                    <p>PCB Designing 2</p>
+                </div>
+                
+                <div class="project-item">
+                    <img src="images/9.jpg" alt="Projectile Motion">
+                    <p>Projectile Motion</p>
+                </div>
+                
+                <div class="project-item">
+                    <img src="images/12.jpg" alt="Tuss Model">
+                    <p>Tuss Model</p>
+                </div>
+                
+                <div class="project-item">
+                    <img src="images/13.jpg" alt="Python Certificate">
+                    <p>Python Certificate by Cisco</p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="contact" class="section">
+            <h1>Contacts</h1>
+            <p>Thank you for taking the time to explore my work. I'm always open to new opportunities, collaborations, or simply a good conversation. Feel free to reach out through any of the channels below. I'd love to hear from you!</p>
+            
+            <div class="contact-info">
+                <p><strong>Email:</strong> <a href="mailto:202401070197@mitaoe.ac.in">202401070197@mitaoe.ac.in</a></p>
+            </div>
+        </section>
+    </div>
 </body>
 </html>
